@@ -16,5 +16,6 @@
         }
 
         public abstract double toResult();
+        public abstract string print();
     }
 }

@@ -10,5 +10,10 @@
         {
             return X - Y;
         }
+
+        public override string print()
+        {
+            return $"({X} - {Y}) = {toResult()}";
+        }
     }
 }

@@ -13,6 +13,11 @@
             return X / Y;
         }
 
+        public override string print()
+        {
+            return $"({X} / {Y}) = {toResult()}";
+        }
+
         private void Validate()
         {
             if (Y == 0)

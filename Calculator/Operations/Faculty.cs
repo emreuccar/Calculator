@@ -14,6 +14,11 @@
             return CalculateFactorial();
         }
 
+        public override string print()
+        {
+            return $"({X}!) = {toResult()}";
+        }
+
         private void Validate()
         {
             if (X < 0)
