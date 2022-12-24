@@ -2,12 +2,27 @@
 {
     public class Faculty : Operation
     {
-        public Faculty(double x) : base(x)
+        public Faculty(int x) : base(x)
         {
-            X = x;
+            
         }
 
         public override double toResult()
+        {
+            Validate();
+
+            return CalculateFactorial();
+        }
+
+        private void Validate()
+        {
+            if (X < 0)
+            {
+                throw new ArgumentException("Factorials don't exist for negative numbers!");
+            }
+        }
+
+        private double CalculateFactorial()
         {
             int result = 1;
 
