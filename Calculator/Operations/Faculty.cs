@@ -5,12 +5,14 @@
         public Faculty(double x)
         {
             X = x;
-            FirstParameterText = x.ToString();
+            FirstParameterTextForPrint = x.ToString();
+            FirstParameterTextForSentence = x.ToString();
         }
         public Faculty(Operation coOperation)
         {
             X = coOperation.toResult();
-            FirstParameterText = coOperation.printWithoutResult();
+            FirstParameterTextForPrint = coOperation.printWithoutResult();
+            FirstParameterTextForSentence = coOperation.printSentenceWithoutResult();
         }
 
         public override double toResult()
@@ -18,12 +20,7 @@
             Validate();
 
             return CalculateFactorial();
-        }
-
-        public override string printWithoutResult()
-        {
-            return $"({FirstParameterText}!)";
-        }
+        }     
 
         private void Validate()
         {
@@ -48,6 +45,16 @@
             }
 
             return result;
+        }
+
+        public override string printWithoutResult()
+        {
+            return $"({FirstParameterTextForPrint}!)";
+        }
+
+        public override string printSentenceWithoutResult()
+        {
+            return $"faculty of {FirstParameterTextForSentence}";
         }
     }
 }

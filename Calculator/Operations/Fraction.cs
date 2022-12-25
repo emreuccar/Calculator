@@ -6,5 +6,17 @@
         {
         }
 
+        public Fraction(double x, Operation coOperation) : base(x, coOperation)
+        {
+
+        }
+
+        public Fraction(Operation coOperation, double y) : base(coOperation, y)
+        {
+        }
+
+        public Fraction(Operation coOperation1, Operation coOperation2) : base(coOperation1, coOperation2)
+        {
+        }
     }
 }
