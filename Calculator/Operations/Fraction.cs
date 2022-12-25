@@ -18,5 +18,16 @@
         public Fraction(Operation coOperation1, Operation coOperation2) : base(coOperation1, coOperation2)
         {
         }
+
+        public override string printWithoutResult()
+        {
+            return $"({FirstParameterTextForPrint}/{SecondParameterTextForPrint})";
+        }
+
+
+        public override string printSentenceWithoutResult()
+        {
+            return $"{FirstParameterTextForSentence}/{SecondParameterTextForSentence}";
+        }
     }
 }

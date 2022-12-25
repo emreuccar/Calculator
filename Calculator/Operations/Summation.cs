@@ -34,7 +34,7 @@
             FirstParameterTextForPrint = coOperation.printWithoutResult();
             SecondParameterTextForPrint = y.ToString();
 
-            FirstParameterTextForSentence = coOperation.printWithoutResult();
+            FirstParameterTextForSentence = coOperation.printSentenceWithoutResult();
             SecondParameterTextForSentence = y.ToString();
         }
 
@@ -46,8 +46,8 @@
             FirstParameterTextForPrint = coOperation1.printWithoutResult();
             SecondParameterTextForPrint = coOperation2.printWithoutResult();
 
-            FirstParameterTextForSentence = coOperation1.printWithoutResult();
-            SecondParameterTextForSentence = coOperation2.printWithoutResult();
+            FirstParameterTextForSentence = coOperation1.printSentenceWithoutResult();
+            SecondParameterTextForSentence = coOperation2.printSentenceWithoutResult();
         }
 
         public override double toResult()

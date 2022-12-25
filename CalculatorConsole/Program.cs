@@ -1,5 +1,4 @@
 ﻿using Calculator.Operations;
 
-var x = new Multiplication(new Division(9, 4), new
-Fraction(2, 3)).printSentence();
+var x = new Division(30, new Summation(2, 3)).print();
 var a = 1;
