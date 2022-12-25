@@ -2,65 +2,47 @@
 {
     public class Faculty : Operation
     {
-        public Faculty(double x) : base(x)
+        public Faculty(double x)
         {
-            
+            X = x;
+            FirstParameterText = x.ToString();
         }
-        public Faculty(Operation coOperation) : base(coOperation)
+        public Faculty(Operation coOperation)
         {
-
+            X = coOperation.toResult();
+            FirstParameterText = coOperation.printWithoutResult();
         }
 
         public override double toResult()
         {
-            double theNumber = 1;
+            Validate();
 
-            switch (Scenario)
-            {
-                case 2:
-                    theNumber = X;
-                    break;
-                case 6:
-                    theNumber = CoOperation1.toResult();
-                    break;
-            }
-
-            Validate(theNumber);
-
-            return CalculateFactorial(theNumber);
+            return CalculateFactorial();
         }
 
         public override string printWithoutResult()
         {
-            switch (Scenario)
-            {
-                case 2:
-                    return $"({X}!)";
-                case 6:
-                    return $"({CoOperation1.printWithoutResult()}!)";
-            }
-
-            return "";
+            return $"({FirstParameterText}!)";
         }
 
-        private void Validate(double x)
+        private void Validate()
         {
-            if (x < 0)
+            if (X < 0)
             {
                 throw new ArgumentException("There is no factorial for negative numbers!");
             }
 
-            if (x % 1 != 0)
+            if (X % 1 != 0)
             {
                 throw new ArgumentException("There is no factorial for fractional numbers!");
             }
         }
 
-        private double CalculateFactorial(double x)
+        private double CalculateFactorial()
         {
             int result = 1;
 
-            for (int i = 1; i <= x; i++)
+            for (int i = 1; i <= X; i++)
             {
                 result *= i;
             }

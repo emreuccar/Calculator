@@ -2,61 +2,46 @@
 {
     public class Summation : Operation
     {
-        public Summation(double x, double y) : base(x, y)
+        public Summation(double x, double y)
         {
-
+            X = x;
+            Y = y;
+            FirstParameterText = x.ToString();
+            SecondParameterText = y.ToString();
         }
 
-        public Summation(double x) : base(x)
+        public Summation(double x, Operation coOperation)
         {
-
+            X = x;
+            Y = coOperation.toResult();
+            FirstParameterText = x.ToString();
+            SecondParameterText = coOperation.printWithoutResult();
         }
 
-        public Summation(double x, Operation coOperation) : base(x, coOperation)
-        {
+        public Summation(Operation coOperation, double y)
+        {            
+            X = coOperation.toResult();
+            Y = y;
+            FirstParameterText = coOperation.printWithoutResult();
+            SecondParameterText = y.ToString();
         }
 
-        public Summation(Operation coOperation, double y) : base(coOperation, y)
+        public Summation(Operation coOperation1, Operation coOperation2) 
         {
-        }
-
-        public Summation(Operation coOperation1, Operation coOperation2) : base(coOperation1, coOperation2)
-        {
-
+            X = coOperation1.toResult();
+            Y = coOperation2.toResult();
+            FirstParameterText = coOperation1.printWithoutResult();
+            SecondParameterText = coOperation2.printWithoutResult();
         }
 
         public override double toResult()
         {
-            switch (Scenario)
-            {
-                case 1:
-                    return X + Y;
-                case 3:
-                    return X + CoOperation1.toResult();
-                case 4:
-                    return CoOperation1.toResult() + Y;
-                case 5:
-                    return CoOperation1.toResult() + CoOperation2.toResult();
-            }
-
-            return 0;
+            return X + Y;
         }
 
         public override string printWithoutResult()
         {
-            switch (Scenario)
-            {
-                case 1:
-                    return $"({X} + {Y})";
-                case 3:
-                    return $"({X} + {CoOperation1.printWithoutResult()})";
-                case 4:
-                    return $"({CoOperation1.printWithoutResult()} + {Y})";
-                case 5:
-                    return $"({CoOperation1.printWithoutResult()} + {CoOperation2.printWithoutResult()})";
-            }
-
-            return "";
+            return $"({FirstParameterText} + {SecondParameterText})";
         }
     }
 }

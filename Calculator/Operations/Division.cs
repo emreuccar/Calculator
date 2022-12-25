@@ -2,79 +2,53 @@
 {
     public class Division : Operation
     {
-        public Division(double x, double y) : base(x, y)
+        public Division(double x, double y)
         {
-
+            X = x;
+            Y = y;
+            FirstParameterText = x.ToString();
+            SecondParameterText = y.ToString();
         }
 
-        public Division(double x) : base(x)
+        public Division(double x, Operation coOperation)
         {
-
+            X = x;
+            Y = coOperation.toResult();
+            FirstParameterText = x.ToString();
+            SecondParameterText = coOperation.printWithoutResult();
         }
 
-        public Division(double x, Operation coOperation) : base(x, coOperation)
+        public Division(Operation coOperation, double y)
         {
+            X = coOperation.toResult();
+            Y = y;
+            FirstParameterText = coOperation.printWithoutResult();
+            SecondParameterText = y.ToString();
         }
 
-        public Division(Operation coOperation, double y) : base(coOperation, y)
+        public Division(Operation coOperation1, Operation coOperation2)
         {
-        }
-
-        public Division(Operation coOperation1, Operation coOperation2) : base(coOperation1, coOperation2)
-        {
-
+            X = coOperation1.toResult();
+            Y = coOperation2.toResult();
+            FirstParameterText = coOperation1.printWithoutResult();
+            SecondParameterText = coOperation2.printWithoutResult();
         }
 
         public override double toResult()
         {
-            double firstNumber = 0;
-            double secondNumber = 0;
+            Validate();
 
-            switch (Scenario)
-            {
-                case 1:
-                    firstNumber = X;
-                    secondNumber = Y;
-                    break;
-                case 3:
-                    firstNumber = X;
-                    secondNumber = CoOperation1.toResult();
-                    break;
-                case 4:
-                    firstNumber = CoOperation1.toResult();
-                    secondNumber = Y;
-                    break;
-                case 5:
-                    firstNumber = CoOperation1.toResult();
-                    secondNumber = CoOperation2.toResult();
-                    break;
-            }
-
-            Validate(secondNumber);
-
-            return firstNumber / secondNumber;
+            return X / Y;
         }
 
         public override string printWithoutResult()
         {
-            switch (Scenario)
-            {
-                case 1:
-                    return $"({X} / {Y})";
-                case 3:
-                    return $"({X} / {CoOperation1.printWithoutResult()})";
-                case 4:
-                    return $"({CoOperation1.printWithoutResult()} / {Y})";
-                case 5:
-                    return $"({CoOperation1.printWithoutResult()} / {CoOperation2.printWithoutResult()})";
-            }
-
-            return "";
+            return $"({FirstParameterText} / {SecondParameterText})";
         }
 
-        private void Validate(double secondNumber)
+        private void Validate()
         {
-            if (secondNumber == 0)
+            if (Y == 0)
             {
                 throw new DivideByZeroException();
             }
