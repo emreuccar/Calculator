@@ -47,12 +47,12 @@
             return result;
         }
 
-        public override string printWithoutResult()
+        internal override string printWithoutResult()
         {
             return $"({FirstParameterTextForPrint}!)";
         }
 
-        public override string printSentenceWithoutResult()
+        internal override string printSentenceWithoutResult()
         {
             return $"faculty of {FirstParameterTextForSentence}";
         }

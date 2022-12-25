@@ -19,13 +19,11 @@
         {
         }
 
-        public override string printWithoutResult()
+        internal override string printWithoutResult()
         {
             return $"({FirstParameterTextForPrint}/{SecondParameterTextForPrint})";
         }
-
-
-        public override string printSentenceWithoutResult()
+        internal override string printSentenceWithoutResult()
         {
             return $"{FirstParameterTextForSentence}/{SecondParameterTextForSentence}";
         }

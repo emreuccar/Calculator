@@ -43,6 +43,10 @@ namespace Calculator.Test
             result = new Multiplication(new Fraction(9, 4), new Fraction(2, 3)).print();
             expectedValue = "((9/4) * (2/3)) = 1.5";
             Assert.AreEqual(expectedValue, result.Replace(',', '.'), $"result should be {expectedValue}");
+
+            result = new Multiplication(new Fraction(6, 4), new Fraction(48, new Faculty(4))).print();
+            expectedValue = "((6/4) * (48/(4!))) = 3";
+            Assert.AreEqual(expectedValue, result.Replace(',', '.'), $"result should be {expectedValue}");
         }
 
         [TestMethod]
@@ -63,6 +67,41 @@ namespace Calculator.Test
             result = new Multiplication(new Fraction(9, 4), new Fraction(2, 3)).printSentence();
             expectedValue = "multiplication of 9/4 and 2/3 is 1.5";
             Assert.AreEqual(expectedValue, result.Replace(',', '.'), $"result should be {expectedValue}");
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void DivideByZeroTest()
+        {
+            new Division(5, 0).toResult();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "There is no factorial for negative numbers!")]
+        public void NegativeFacultyTest()
+        {
+            new Faculty(-2).toResult();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException), "There is no factorial for fractional numbers!")]
+        public void FractionalFacultyTest()
+        {
+            new Faculty(3.5).toResult();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void DivideByZeroPrintTest()
+        {
+            new Division(2, new Subtraction(1, 1)).print();
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(DivideByZeroException))]
+        public void DivideByZeroPrintSentenceTest()
+        {
+            new Division(2, new Subtraction(1, 1)).printSentence();
         }
     }
 }
