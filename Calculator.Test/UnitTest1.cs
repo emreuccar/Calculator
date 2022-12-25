@@ -103,5 +103,22 @@ namespace Calculator.Test
         {
             new Division(2, new Subtraction(1, 1)).printSentence();
         }
+
+        [TestMethod]
+        public void InfinityTest()
+        {
+            var result = new Summation(double.MaxValue, double.MaxValue).toResult();
+            var expectedValue = double.PositiveInfinity;
+            Assert.AreEqual(expectedValue, result, $"result should be {expectedValue}");
+        }
+
+        [TestMethod]
+        public void InfinityOperationTest()
+        {
+            var result = new Summation(double.PositiveInfinity, double.MaxValue).toResult();
+            var expectedValue = double.PositiveInfinity;
+            Assert.AreEqual(expectedValue, result, $"result should be {expectedValue}");
+
+        }
     }
 }
