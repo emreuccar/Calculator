@@ -2,25 +2,15 @@
 {
     public class Faculty : Operation
     {
-        public Faculty(double x)
-        {
-            X = x;
-            FirstParameterTextForPrint = x.ToString();
-            FirstParameterTextForSentence = x.ToString();
-        }
-        public Faculty(Operation coOperation)
-        {
-            X = coOperation.toResult();
-            FirstParameterTextForPrint = coOperation.printWithoutResult();
-            FirstParameterTextForSentence = coOperation.printSentenceWithoutResult();
-        }
+        public Faculty(double x) : base(x) { }
+        public Faculty(Operation coOperation) : base(coOperation) { }
 
         public override double toResult()
         {
             Validate();
 
             return CalculateFactorial();
-        }     
+        }
 
         private void Validate()
         {
